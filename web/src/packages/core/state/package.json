@@ -1,0 +1,5 @@
+{
+  "name": "@todo/state",
+  "main": "./index.tsx",
+  "version": "0.0.1"
+}
