@@ -8,7 +8,7 @@ module.exports = {
   apps: [
     {
       name,
-      script: 'yarn start',
+      script: 'yarn server',
       args: `--port ${port}`,
       env: {
         NODE_ENV: 'development'
