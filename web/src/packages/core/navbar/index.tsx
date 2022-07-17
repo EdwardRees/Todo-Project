@@ -15,12 +15,14 @@ const Navbar = ({ isAuthenticated }: Props): ReactElement => {
   const handleLogout = () => {
     dispatch({ type: LOGOUT });
     navigate("/");
-  } 
+  };
   if (isAuthenticated) {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <Link to="/" className="btn btn-info">Simple Todo List</Link>
+          <Link to="/" className="btn btn-info">
+            Simple Todo List
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -58,7 +60,9 @@ const Navbar = ({ isAuthenticated }: Props): ReactElement => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <Link to="/">Todo List</Link>
+        <Link to="/" className="btn btn-info">
+          Simple Todo List
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
