@@ -4,7 +4,7 @@ import routes from './routes';
 import cors from 'cors';
 
 const app: Application = express();
-const PORT: string | number = process.env.PORT || 5500;
+const PORT: string | number = process.env.PORT || 5750;
 
 const prisma: PrismaClient = new PrismaClient();
 

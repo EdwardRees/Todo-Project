@@ -11,7 +11,7 @@ module.exports = {
       script: "yarn server",
       args: `--port ${port}`,
       env: {
-        PORT: 5500,
+        PORT: 5750,
         NODE_ENV: "development",
       },
       env_production: {
