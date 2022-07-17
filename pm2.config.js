@@ -2,7 +2,7 @@ const name="todolist.edwardrees.info";
 const user="erees";
 const host="todolist.edwardrees.info";
 const port=5750;
-const build="yarn install";
+const build="yarn install; yarn build";
 
 module.exports = {
   apps: [
