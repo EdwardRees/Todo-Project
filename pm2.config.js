@@ -13,16 +13,16 @@ module.exports = {
       env: {
         PORT: 5750,
         NODE_ENV: "development",
-        DATABASE_URL: "postgres://postgres:TheModBros@74.207.247.118:5432/tododb",
-        ACCESS_TOKEN_SECRET: "19-20-8-22-11-1-3",
-        JWT_SECRET: "19-20-8-22-11-1-3"
+        DATABASE_URL: "postgres://todoadmin:todoadmin010@74.207.247.118:5432/tododb",
+        ACCESS_TOKEN_SECRET: "TodoAdminSecret",
+        JWT_SECRET: "TodoAdminSecret"
       },
       env_production: {
         PORT: 5750,
         NODE_ENV: "production",
-        DATABASE_URL: "postgres://postgres:TheModBros@74.207.247.118:5432/tododb",
-        ACCESS_TOKEN_SECRET: "19-20-8-22-11-1-3",
-        JWT_SECRET: "19-20-8-22-11-1-3"
+        DATABASE_URL: "postgres://todoadmin:todoadmin010@74.207.247.118:5432/tododb",
+        ACCESS_TOKEN_SECRET: "TodoAdminSecret",
+        JWT_SECRET: "TodoAdminSecret"
       },
     },
   ],
