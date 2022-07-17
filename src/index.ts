@@ -1,6 +1,7 @@
 import express, { Application, Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 import routes from './routes';
+import cors from 'cors';
 
 const app: Application = express();
 const PORT: string | number = process.env.PORT || 5500;
@@ -8,6 +9,7 @@ const PORT: string | number = process.env.PORT || 5500;
 const prisma: PrismaClient = new PrismaClient();
 
 app.use(express.json());
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
 

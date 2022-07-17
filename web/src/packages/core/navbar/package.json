@@ -1,4 +1,5 @@
 {
-  "name": "@todo/navbar",
-  "main": "./index.tsx"
+  "name": "@todo/core-navbar",
+  "main": "./index.tsx",
+  "version": "0.0.1"
 }

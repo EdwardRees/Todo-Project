@@ -35,7 +35,7 @@ const todoRouter = (prisma: PrismaClient) => {
         desc,
         list: {
           connect: {
-            id: parseInt(listId),
+            id: listId
           },
         },
         user: {
@@ -71,12 +71,18 @@ const todoRouter = (prisma: PrismaClient) => {
       return res.status(401).send({ error: "User not found" });
     }
     const { id } = req.params;
-    let item = await prisma.todoItem.findUnique({
+    let item = await prisma.todoItem.findMany({
       where: {
         id: parseInt(id),
+        user: {
+          id: userId,
+        },
       },
     });
-    res.send(item);
+    if (item.length === 0) {
+      return res.status(404).send({ error: "Todo item not found" });
+    }
+    res.send(item[0]);
   });
 
   router.put(
@@ -107,7 +113,7 @@ const todoRouter = (prisma: PrismaClient) => {
           desc,
           list: {
             connect: {
-              id: parseInt(listId),
+              id: listId
             },
           },
         },

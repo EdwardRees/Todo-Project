@@ -35,7 +35,7 @@ const listRouter = (prisma: PrismaClient) => {
         },
         user: {
           connect: {
-            id: parseInt(userId),
+            id: userId,
           },
         },
       },
@@ -53,12 +53,35 @@ const listRouter = (prisma: PrismaClient) => {
     let lists = await prisma.todoList.findMany({
       where: {
         user: {
-          id: parseInt(userId),
+          id: userId,
         },
       },
     });
     res.send(lists);
   });
+
+  router.get(
+    "/info/:listId",
+    [verify],
+    async (req: UserRequest, res: Response) => {
+      const userId = req.user?.user.userId;
+      if (!userId) {
+        console.error("Cannot get list info, no user id");
+        return res.status(401).send({ error: "User not found" });
+      }
+      const { listId } = req.params;
+      if (!listId) {
+        console.error("No list id provided");
+        return res.status(400).send({ error: "No list id provided" });
+      }
+      let list = await prisma.todoList.findUnique({
+        where: {
+          id: listId
+        },
+      });
+      res.send(list);
+    }
+  );
 
   router.get("/:listId", [verify], async (req: UserRequest, res: Response) => {
     const userId = req.user?.user.userId;
@@ -69,7 +92,7 @@ const listRouter = (prisma: PrismaClient) => {
     const { listId } = req.params;
     let items = await prisma.todoItem.findMany({
       where: {
-        listId: parseInt(listId),
+        listId: listId
       },
     });
     res.send(items);

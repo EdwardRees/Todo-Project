@@ -15,6 +15,15 @@ const userRouter = (prisma: PrismaClient) => {
     return res.send(users);
   });
 
+  router.get("/get", [verify], async (req: UserRequest, res: Response) => {
+    let user = await prisma.user.findUnique({
+      where: {
+        id: req.user?.user.userId,
+      },
+    });
+    return res.send(user);
+  })
+
   router.post("/list", [verify], async (req: UserRequest, res: Response) => {
     const { name } = req.body;
     const userId = req.user?.user.userId;
@@ -27,7 +36,7 @@ const userRouter = (prisma: PrismaClient) => {
         data: {
           user: {
             connect: {
-              id: parseInt(userId),
+              id: userId,
             },
           },
           name: name,
@@ -46,7 +55,7 @@ const userRouter = (prisma: PrismaClient) => {
     await prisma.todoList
       .findMany({
         where: {
-          userId: parseInt(userId),
+          userId: userId,
         },
       })
       .then((lists) => res.send(lists))

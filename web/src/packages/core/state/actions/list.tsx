@@ -40,7 +40,7 @@ export const addTodoList = (name: string) => async (dispatch: Dispatch) => {
     const token = localStorage.getItem("token");
     if (token) {
       const res = await api.post(
-        "/list/user/create",
+        "/list/create",
         {
           name,
         },
@@ -74,9 +74,18 @@ export const getListItems = (id: string) => async (dispatch: Dispatch) => {
           "x-auth-token": token,
         },
       });
+      const listInfo = await api.get(`/list/info/${id}`, {
+        headers: {
+          "x-auth-token": token,
+        }
+      });
+      let data = {
+        name: listInfo.data.name,
+        todos: res.data
+      }
       dispatch({
         type: GET_TODO_LIST_ITEMS_SUCCESS,
-        payload: res.data,
+        payload: data
       });
     } else {
       dispatch({

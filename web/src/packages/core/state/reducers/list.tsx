@@ -9,9 +9,11 @@ import {
   UPDATE_TODO_LIST_FAIL,
   GET_TODO_LIST_ITEMS_SUCCESS,
   GET_TODO_LIST_ITEMS_FAIL,
+  ADD_TODO_SUCCESS,
 } from "../actions/types";
 
 const initialState = {
+  name: "",
   todoLists: [],
   todos: [],
   loading: false,
@@ -52,18 +54,18 @@ const listReducer = (state = initialState, action: any) => {
         ),
         loading: false,
       };
-    case GET_TODO_LIST_ITEMS_SUCCESS:
+    case ADD_TODO_SUCCESS:
       return {
         ...state,
-        todoLists: state.todoLists.map((todoList: any) => {
-          if (todoList.id === payload.id) {
-            return {
-              ...todoList,
-              todos: payload.todos,
-            };
-          }
-          return todoList;
-        }),
+        todos: [...state.todos, payload],
+        loading: false,
+      };
+    case GET_TODO_LIST_ITEMS_SUCCESS:
+      console.info(payload);
+      return {
+        ...state,
+        name: payload.name,
+        todos: payload.todos,
         loading: false,
       };
     case GET_TODO_LIST_FAIL:

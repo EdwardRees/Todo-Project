@@ -6,6 +6,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   USER_LOAD_FAIL,
+  LOGOUT
 } from "./types";
 import { Dispatch } from "redux";
 
@@ -51,7 +52,7 @@ export const register = (formData: any) => async (dispatch: Dispatch) => {
   }
 };
 
-export const login = (formData: any) => async (dispatch: any) => {
+export const login = (formData: any) => async (dispatch: Dispatch) => {
   try {
     const res = await api.post("auth/login", formData);
     dispatch({
@@ -67,3 +68,11 @@ export const login = (formData: any) => async (dispatch: any) => {
     return false;
   }
 };
+
+export const logout = () => (dispatch: Dispatch) => {
+  localStorage.removeItem("token");
+  dispatch({
+    type: LOGOUT
+  });
+};
+

@@ -21,7 +21,7 @@ export const getTodos = () => async (dispatch: Dispatch) => {
   try {
     const token = localStorage.getItem("token");
     if (token) {
-      const res = await api.get("/todos/user", {
+      const res = await api.get("/todo/user", {
         headers: {
           "x-auth-token": token,
         },
@@ -45,7 +45,7 @@ export const addTodo =
       const token = localStorage.getItem("token");
       if (token) {
         const res = await api.post(
-          "/todos/create",
+          "/todo/create",
           {
             name,
             desc,
@@ -76,7 +76,7 @@ export const updateTodo =
       const token = localStorage.getItem("token");
       if (token) {
         const res = await api.put(
-          `/todos/update/${id}`,
+          `/todo/update/${id}`,
           {
             name,
             desc,
@@ -104,7 +104,7 @@ export const deleteTodo = (id: number) => async (dispatch: Dispatch) => {
   try {
     const token = localStorage.getItem("token");
     if (token) {
-      const res = await api.delete(`/todos/${id}`, {
+      const res = await api.delete(`/todo/${id}`, {
         headers: {
           "x-auth-token": token,
         },
@@ -152,7 +152,7 @@ export const markIncompleteTodo =
       const token = localStorage.getItem("token");
       if (token) {
         const res = await api.put(
-          `/todos/incomplete/${id}`,
+          `/todo/incomplete/${id}`,
           {},
           {
             headers: {
@@ -176,7 +176,7 @@ export const getCompletedTodos = () => async (dispatch: Dispatch) => {
   try {
     const token = localStorage.getItem("token");
     if (token) {
-      const res = await api.get("/todos/user/completed", {
+      const res = await api.get("/todo/user/completed", {
         headers: {
           "x-auth-token": token,
         },
