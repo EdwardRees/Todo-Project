@@ -35,7 +35,7 @@ const todoRouter = (prisma: PrismaClient) => {
         desc,
         list: {
           connect: {
-            id: listId
+            id: listId,
           },
         },
         user: {
@@ -73,7 +73,7 @@ const todoRouter = (prisma: PrismaClient) => {
     const { id } = req.params;
     let item = await prisma.todoItem.findMany({
       where: {
-        id: parseInt(id),
+        id: id,
         user: {
           id: userId,
         },
@@ -106,14 +106,14 @@ const todoRouter = (prisma: PrismaClient) => {
       }
       let item = await prisma.todoItem.update({
         where: {
-          id: parseInt(id),
+          id: id,
         },
         data: {
           name,
           desc,
           list: {
             connect: {
-              id: listId
+              id: listId,
             },
           },
         },
@@ -134,7 +134,7 @@ const todoRouter = (prisma: PrismaClient) => {
       const { id } = req.params;
       let item = await prisma.todoItem.update({
         where: {
-          id: parseInt(id),
+          id: id,
         },
         data: {
           completed: true,
@@ -160,7 +160,7 @@ const todoRouter = (prisma: PrismaClient) => {
       const { id } = req.params;
       let item = await prisma.todoItem.update({
         where: {
-          id: parseInt(id),
+          id: id,
         },
         data: {
           completed: false,
@@ -206,7 +206,7 @@ const todoRouter = (prisma: PrismaClient) => {
     const { id } = req.params;
     let item = await prisma.todoItem.delete({
       where: {
-        id: parseInt(id),
+        id: id,
       },
     });
     return res.send(item);
