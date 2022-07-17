@@ -7,7 +7,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "server": "nodemon src/index.ts",
+    "dev:server": "nodemon src/index.ts",
+    "server": "node dist/index.js",
     "build": "tsc",
     "web": "npm run dev --prefix web",
     "start": "concurrently -n \"server,web\" -c \"#ff0000,#00ff00\" -k \"yarn server\" \"yarn web\""
