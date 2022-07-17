@@ -11,7 +11,9 @@
     "server": "node dist/index.js",
     "build": "tsc",
     "web": "npm run dev --prefix web",
-    "start": "concurrently -n \"server,web\" -c \"#ff0000,#00ff00\" -k \"yarn server\" \"yarn web\""
+    "start": "concurrently -n \"server,web\" -c \"#ff0000,#00ff00\" -k \"yarn server\" \"yarn web\"",
+    "deploy:setup": "pm2 deploy pm2.config.js production setup",
+    "deploy": "pm2 deploy pm2.config.js production deploy"
   },
   "dependencies": {
     "@prisma/client": "^4.0.0",
@@ -31,5 +33,8 @@
     "nodemon": "^2.0.18",
     "prisma": "^4.0.0",
     "typescript": "^4.6.4"
+  },
+  "devDependencies": {
+    "pm2": "^5.2.0"
   }
 }
