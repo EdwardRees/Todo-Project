@@ -4,9 +4,25 @@ import { Navbar } from "@todo/core-navbar";
 import { useNavigate, useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { getListItems } from "@todo/state/actions/list";
-import { addTodo } from "@todo/state/actions/todo";
+import {
+  addTodo,
+  markCompleteTodo,
+  markIncompleteTodo,
+  updateTodo,
+  deleteTodo
+} from "@todo/state/actions/todo";
+import { TodoItem } from "@todo/components/TodoItem";
 
-const Todos = ({ getListItems, name, todos, addTodo }: any): ReactElement => {
+const Todos = ({
+  getListItems,
+  name,
+  todos,
+  addTodo,
+  markCompleteTodo,
+  markIncompleteTodo,
+  updateTodo,
+  deleteTodo
+}: any): ReactElement => {
   const [todoName, setTodoName] = useState("");
   const [todoDesc, setTodoDesc] = useState("");
   const auth = useAuth();
@@ -25,6 +41,24 @@ const Todos = ({ getListItems, name, todos, addTodo }: any): ReactElement => {
       setTodoDesc("");
     }
   };
+
+  const toggleComplete = (id: string, completed: boolean) => {
+    if (completed) {
+      markIncompleteTodo(id);
+    } else {
+      markCompleteTodo(id);
+    }
+  };
+
+  const updateTodoItem = (name: string, desc: string, listId: number, id: number) => {
+    updateTodo(name, desc, listId, id);
+  }
+
+  const deleteItem = (id: string | undefined) => {
+    if(id){
+      deleteTodo(id);
+    }
+  }
 
   return (
     <>
@@ -74,19 +108,21 @@ const Todos = ({ getListItems, name, todos, addTodo }: any): ReactElement => {
             </div>
             <div className="pb-3"></div>
             <div className="pb-3"></div>
-            <ul>
+            <div>
               {todos?.map((todo: any) => (
-                <li key={todo.id} className="row">
-                  <div className="col-sm-2">{todo.completed ? "✅" : "❌"}</div>
-                  <div className="col-sm-4">
-                    <span>{todo.name}</span>
-                  </div>
-                  <div className="col-sm-6">
-                    <span>{todo.desc}</span>
-                  </div>
-                </li>
+                <TodoItem
+                  key={todo.id}
+                  id={todo.id}
+                  name={todo.name}
+                  desc={todo.desc}
+                  completed={todo.completed}
+                  toggleComplete={toggleComplete}
+                  listId={id}
+                  updateTodo={updateTodoItem}
+                  deleteTodo={deleteItem}
+                />
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       ) : (
@@ -106,4 +142,11 @@ const mapStateToProps = (state: any) => ({
   todos: state.list.todos,
 });
 
-export default connect(mapStateToProps, { getListItems, addTodo })(Todos);
+export default connect(mapStateToProps, {
+  getListItems,
+  addTodo,
+  markCompleteTodo,
+  markIncompleteTodo,
+  updateTodo,
+  deleteTodo
+})(Todos);

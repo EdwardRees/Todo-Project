@@ -10,6 +10,8 @@ import {
   GET_TODO_LIST_ITEMS_SUCCESS,
   GET_TODO_LIST_ITEMS_FAIL,
   ADD_TODO_SUCCESS,
+  UPDATE_TODO_SUCCESS,
+  DELETE_TODO_SUCCESS
 } from "../actions/types";
 
 const initialState = {
@@ -58,6 +60,23 @@ const listReducer = (state = initialState, action: any) => {
       return {
         ...state,
         todos: [...state.todos, payload],
+        loading: false,
+      };
+    case UPDATE_TODO_SUCCESS:
+      return {
+        ...state,
+        todos: state.todos.map((todo: any) => {
+          if (todo.id === payload.d) {
+            return payload;
+          }
+          return todo;
+        }),
+        loading: false,
+      };
+    case DELETE_TODO_SUCCESS:
+      return {
+        ...state,
+        todos: state.todos.filter((todo: any) => todo.id !== payload),
         loading: false,
       };
     case GET_TODO_LIST_ITEMS_SUCCESS:

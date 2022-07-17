@@ -41,6 +41,9 @@ const Lists = ({ getTodoList, addTodoList, todoLists }: any): ReactElement => {
               </button>
             </div>
           </div>
+          <div className="pb-3"></div>
+          <div className="pb-3"></div>
+          <div className="pb-3"></div>
           <div className="row">
             {todoLists?.map((list: any) => (
               <div className="col-md-4" key={list.id}>

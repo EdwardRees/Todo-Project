@@ -111,7 +111,7 @@ export const deleteTodo = (id: number) => async (dispatch: Dispatch) => {
       });
       dispatch({
         type: DELETE_TODO_SUCCESS,
-        payload: res.data,
+        payload: res.data.id,
       });
     } else {
       dispatch({ type: DELETE_TODO_FAIL, payload: "No token" });
@@ -126,7 +126,7 @@ export const markCompleteTodo = (id: number) => async (dispatch: Dispatch) => {
     const token = localStorage.getItem("token");
     if (token) {
       const res = await api.put(
-        `/todos/complete/${id}`,
+        `/todo/complete/${id}`,
         {},
         {
           headers: {
