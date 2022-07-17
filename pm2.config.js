@@ -13,14 +13,14 @@ module.exports = {
       env: {
         PORT: 5750,
         NODE_ENV: "development",
-        DATABASE_URL: "postgres://todoadmin:todoadmin010@74.207.247.118:5432/tododb",
+        DATABASE_URL: "postgres://admintodo:todoadmin010@74.207.247.118:5432/tododb",
         ACCESS_TOKEN_SECRET: "TodoAdminSecret",
         JWT_SECRET: "TodoAdminSecret"
       },
       env_production: {
         PORT: 5750,
         NODE_ENV: "production",
-        DATABASE_URL: "postgres://todoadmin:todoadmin010@74.207.247.118:5432/tododb",
+        DATABASE_URL: "postgres://admintodo:todoadmin010@74.207.247.118:5432/tododb",
         ACCESS_TOKEN_SECRET: "TodoAdminSecret",
         JWT_SECRET: "TodoAdminSecret"
       },
