@@ -21,7 +21,7 @@ module.exports = {
   deploy: {
     production: {
       user: 'root',
-      host: '74.204.247.118',
+      host: '74.207.247.118',
       ref: 'origin/master',
       repo: 'git@github.com:EdwardRees/Todo-Project.git',
       path: '/var/www/html/todolist.edwardrees.info',
