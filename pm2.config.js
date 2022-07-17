@@ -13,10 +13,16 @@ module.exports = {
       env: {
         PORT: 5750,
         NODE_ENV: "development",
+        DATABASE_URL: "postgres://postgres:TheModBros@74.207.247.118:5432/tododb",
+        ACCESS_TOKEN_SECRET: "19-20-8-22-11-1-3",
+        JWT_SECRET: "19-20-8-22-11-1-3"
       },
       env_production: {
         PORT: 5750,
         NODE_ENV: "production",
+        DATABASE_URL: "postgres://postgres:TheModBros@74.207.247.118:5432/tododb",
+        ACCESS_TOKEN_SECRET: "19-20-8-22-11-1-3",
+        JWT_SECRET: "19-20-8-22-11-1-3"
       },
     },
   ],
@@ -28,7 +34,7 @@ module.exports = {
       repo: "git@github.com:EdwardRees/Todo-Project.git",
       path: "/var/www/html/todolist.edwardrees.info",
       ssh_options: "ForwardAgent=yes",
-      "post-deploy": `${build} && pm2 reload ecosystem.config.js --env production && pm2 save`,
+      "post-deploy": `${build} && pm2 reload pm2.config.js --env production && pm2 save`,
     },
   },
 };
