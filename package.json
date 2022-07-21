@@ -11,7 +11,7 @@
     "server": "nodemon dist/index.js",
     "build": "tsc",
     "web": "npm run dev --prefix web",
-    "start": "concurrently -n \"server,web\" -c \"#ff0000,#00ff00\" -k \"yarn server\" \"yarn web\"",
+    "start": "concurrently -n \"server,web\" -c \"#ff0000,#00ff00\" -k \"yarn dev:server\" \"yarn web\"",
     "deploy:setup": "pm2 deploy pm2.config.js production setup",
     "deploy": "pm2 deploy pm2.config.js production deploy"
   },
