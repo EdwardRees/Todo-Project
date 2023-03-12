@@ -1,9 +1,9 @@
-import { ReactElement, useEffect, useState } from "react";
-import { useAuth } from "@todo/state";
 import { Navbar } from "@todo/core-navbar";
-import { getTodoList, addTodoList } from "@todo/state/actions/list";
-import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "@todo/state";
+import { addTodoList, getTodoList } from "@todo/state/actions/list";
+import { ReactElement, useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Lists = ({ getTodoList, addTodoList, todoLists }: any): ReactElement => {
   const auth = useAuth();

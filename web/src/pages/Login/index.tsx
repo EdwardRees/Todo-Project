@@ -17,12 +17,14 @@ const Login = ({
   const handleSubmit = (e: any) => {
     e.preventDefault();
     let formData = { email: email, password: password };
-    const loggedIn = login(formData);
-    if (loggedIn) {
-      setEmail("");
-      setPassword("");
-      navigate("/");
-    }
+    login(formData).then((res: any) => {
+      console.info(res);
+      if (res.data === true) {
+        setEmail("");
+        setPassword("");
+        navigate("/");
+      }
+    })
   }
   return (
     <>
