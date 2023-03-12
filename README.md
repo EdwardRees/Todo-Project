@@ -46,6 +46,10 @@ Run `yarn dev:server` or `npm run dev:server`, which will bind to port `5750` un
 
 Run `yarn web` or `npm run web` which will bind to port `3000` unless otherwise specified.
 
+### Simultaneous
+
+While running both backend and frontend servers in two separate sessions is an option, alternatively, running `yarn start` or `npm run start` will run both servers concurrently using the `concurrently` npm package.
+
 ## Accessing the project
 
 Once the servers are up and running, go to `localhost:3000` to access the frontend of the project. If the backend runs without any issues, the frontend should be able to connect to the backend using the axios requests.
