@@ -36,6 +36,8 @@ Navigate to the `web` folder and run `yarn` or `npm install` to install the fron
 
 Navigate back out to the main folder and run `yarn` or `npm install` to install the backend dependencies.
 
+Add the `.env` file to the `src` folder, add `VITE_API_URL="http://localhost:5750/api"` to the file. If the port for the backend is different, change the port here to match the port used by the backend.
+
 ## Instructions to Run
 
 ### Backend
